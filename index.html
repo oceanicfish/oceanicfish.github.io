@@ -1,79 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="description" content=""/>
-<meta name="author" content=""/>
-<title>vLab @ Github.io</title>
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
-<!-- Custom CSS -->
-<style>
-body {
-padding-top: 50px;
-        }
-        .starter-template {
-padding: 40px 15px;
-text-align: center;
-        }
-</style>
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-<div class="container">
-<div class="navbar-header">
-<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand" href="#">vLab Homepage</a>
-</div>
-<div class="collapse navbar-collapse">
-<ul class="nav navbar-nav">
-<li class="active"><a href="#">Home</a></li>
-<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Planning Poker
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="https://oceanicfish.github.io/planning_poker/member.html">投票者</a></li>
-                <li><a class="dropdown-item" href="https://oceanicfish.github.io/planning_poker/manager.html">管理者</a></li>
-                <!-- <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">And More...</a></li> -->
-        </ul>
-</li>
-<li><a href="#about">About</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</div>
-<!--/.nav-collapse -->
-</div>
-<!-- /.container -->
-</nav>
-<!-- Page Content -->
-<div class="container">
-<div class="row">
-<div class="starter-template">
-<h1>vlab Homepage on Github.io</h1>
-<p class="lead">Let's make it count!</p>
-<p><a href="http://getbootstrap.com/getting-started/">http://oceanicfish.github.io/</a></p>
-</div>
-</div>
-<!-- /.row -->
-</div>
-<!-- /.container -->
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+                        initial-scale=1"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>vLab @ Github.io</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link href="resource/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#" id="logo">{vLab}</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Planning poker
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://oceanicfish.github.io/planning_poker/member.html">投票者</a></li>
+                  <li><a class="dropdown-item" href="https://oceanicfish.github.io/planning_poker/manager.html">管理者</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+            <div class="d-flex">
+              <a href="#" class="btn btn-light me-2"
+                ><i class="bi bi-question-circle"></i> Help</a
+              >
+              <a href="#" class="btn btn-light"
+                ><i class="bi bi-box-arrow-in-right"></i> Login</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row text-center">
+        <div class="starter-template mt-5">
+          <h1>{vLab}</h1>
+          <p>
+            <a href="http://getbootstrap.com/getting-started/"
+              >http://oceanicfish.github.io/</a
+            >
+          </p>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- jQuery JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

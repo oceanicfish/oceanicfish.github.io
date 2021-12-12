@@ -1,0 +1,15 @@
+@font-face {
+    font-family: FontHoneyRoom;
+    src: url(../fonts/HoneyRoom.ttf);
+    font-weight: bold;
+}
+
+#logo {
+    font-family:FontHoneyRoom;
+    font-size: 20px;
+}
+
+h1 {
+    font-family:FontHoneyRoom;
+    font-size: 50px;
+}
