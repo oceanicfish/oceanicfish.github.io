@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MediaSDK Plannning Poker【管理者用】</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container">
+            <a class="navbar-brand" href="#">MediaSDK Plannning Poker</a>
+          </div>
+        </nav>
+    </header>
+
+    <br><br>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            <div class="row">
+              <div class="col-sm-3">
+                <input class="form-control" type="email" id="username" placeholder="Please enter your email address">
+              </div>
+              <div class="col-sm-3">
+                <input class="form-control" type="password" id="password" placeholder="Enter your password">
+              </div>
+              <div class="col-sm-6">
+                <button type="button" class="btn btn-success" id="signin">ログイン</button>
+                <button type="button" class="btn btn-secondary" id="clear" disabled>クリア</button>
+                <button type="button" class="btn btn-warning" id="start" disabled>投票開始</button>
+                <button type="button" class="btn btn-danger" id="showhand" disabled>表示する</button>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-8">
+                <ul class="list-group" id="point_list">
+                </ul>
+              </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer></footer>
+
+    <!-- jQuery JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase -->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import { getDatabase, ref, onValue, set, get } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyC-QLp4ZZL86GVnc0amref5ni49ckYggCI",
+        authDomain: "vplanningpoker.firebaseapp.com",
+        projectId: "vplanningpoker",
+        storageBucket: "vplanningpoker.appspot.com",
+        messagingSenderId: "735223033322",
+        appId: "1:735223033322:web:022d55a05beb35054ad693"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      var database;
+      var reference;
+
+      $('#signin').click(() => {
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, $('#username').val(), $('#password').val())
+          .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            alert("ログインしました");
+            $('#username').prop('disabled', true);
+            $('#password').prop('disabled', true);
+            $('#clear').prop('disabled', false);
+            $('#start').prop('disabled', false);
+            $('#showhand').prop('disabled', false);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+            $('#username').prop('disabled', false);
+            $('#password').prop('disabled', false);
+            $('#clear').prop('disabled', true);
+            $('#start').prop('disabled', true);
+            $('#showhand').prop('disabled', true);
+          });
+      });
+
+      $('#clear').click(() => {
+        database = new getDatabase(app);
+        reference = ref(database);
+        set(reference, null);
+        $('ul').empty();
+      });
+
+      $('#start').click(() => {
+        database = new getDatabase(app);
+        reference = ref(database);
+        onValue(reference, (snapshot) =>{
+          $('ul').empty();
+          if (snapshot != null) {
+            var dataMap = snapshot.val();
+            if (dataMap != null) {
+              var namelist = Object.keys(dataMap);
+              for (var i = 0; i < namelist.length; i++) {
+                name = namelist[i];
+                if (i % 2 == 0) {
+                  $('ul').append($('<li class="list-group-item d-flex justify-content-between align-items-center list-group-item-secondary">' 
+                                    + name + '<span class="badge bg-primary rounded-pill">***</span></li>'));
+                }else {
+                  $('ul').append($('<li class="list-group-item d-flex justify-content-between align-items-center">' 
+                                    + name + '<span class="badge bg-primary rounded-pill">***</span></li>'));
+                }
+              }
+            }
+          }
+        });
+      });
+
+      $('#showhand').click(() => {
+        $('ul').empty();
+          get(reference).then((snapshot) => { 
+            var dataMap = snapshot.val();
+            var namelist = Object.keys(dataMap);
+            var allPoint = 0;
+            var allMember = 0;
+            for (var i = 0; i < namelist.length; i++) {
+              var name = namelist[i];
+              if (name != 'CM') {
+                var point = parseInt(dataMap[name]);
+                if (i % 2 == 0) {
+                  $('ul').append($('<li class="list-group-item d-flex justify-content-between align-items-center list-group-item-secondary">' 
+                                    + name + '<span class="badge bg-primary rounded-pill">' 
+                                    + point + '</span></li>'));
+                }else {
+                  $('ul').append($('<li class="list-group-item d-flex justify-content-between align-items-center">' 
+                                    + name + '<span class="badge bg-primary rounded-pill">' 
+                                    + point + '</span></li>'));
+                }
+
+                if (point > 0) {
+                  allPoint += parseInt(point)
+                  allMember++;
+                }
+              }
+            }
+            $('ul').append($('<li class="list-group-item active">平均値: ' + (Math.round((allPoint / allMember) * 100) / 100) + ' </li>'));
+          })
+      });
+    </script>
+</body>
+</html>
