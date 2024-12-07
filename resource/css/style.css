@@ -4,12 +4,16 @@
     font-weight: bold;
 }
 
-#logo {
+body {
     font-family:FontHoneyRoom;
+}
+
+#logo {
+    /* font-family:FontHoneyRoom; */
     font-size: 20px;
 }
 
 h1 {
-    font-family:FontHoneyRoom;
+    /* font-family:FontHoneyRoom; */
     font-size: 50px;
 }
